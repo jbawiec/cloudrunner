@@ -1,18 +1,6 @@
 #!/usr/bin/env python
 """
-Copyright 2017, Jon Bawiec
- This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+Please refer to top-level LICENSE file for copyright information
 """
 
 
@@ -518,13 +506,11 @@ class VirtualInstanceAWS(VirtualInstance):
             log.error("Need login name + keyfile for AWS connections")
             raise RuntimeError("Missing creds for AWS")
         env.use_ssh_config = False
-        #env.host_string = self.get_instance_ip()
         env.user = self._login_name
         env.key_filename = self._key_file
         env.password = ""
         env.disable_known_hosts=True # AWS instances are transitory
         env.warn_only = True
-        # env.abort_on_prompts = True
 
     def get_instance_id(self):
         return self._instance.id
@@ -533,13 +519,6 @@ class VirtualInstanceAWS(VirtualInstance):
         return self._instance.ip_address
 
     def run_command_on_gos(self, command, timeout_sec=120):
-        # need to add timeout logic here.
-
-        #output = subprocess.check_output(['ssh', '-i', self._key_file,
-        #                                  '-oStrictHostKeyChecking=no',
-        #                                  self._login_name + '@' +
-        #                                  self._instance.ip_address,
-        #                                  command], stderr=subprocess.STDOUT)
         log.info("Running command: %s", command)
         with settings(host_string=self.get_instance_ip()):
             result = run(command, timeout=timeout_sec)
