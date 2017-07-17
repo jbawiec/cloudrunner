@@ -1,6 +1,6 @@
 FROM ubuntu
-ADD src /mydir/src/
-add keys /mydir/keys/
+ADD src /cloudrunner/src/
+add keys /cloudrunner/keys/
 
 # Install programs
 RUN apt-get update && apt-get install -y \
