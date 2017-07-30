@@ -55,9 +55,9 @@ class Test(classicTest.TestInstance):
         apt_get_cmd = 'DEBIAN_FRONTEND=noninteractive sudo apt-get -y '
 
         pkg_list = 'build-essential libfuse-dev' \
-                  ' libxml2-dev mime-support automake autotools-dev' \
-                  ' g++ git libcurl4-gnutls-dev libssl-dev libxml2-dev' \
-                  ' make pkg-config'
+                   ' libxml2-dev mime-support automake autotools-dev' \
+                   ' g++ git libcurl4-gnutls-dev libssl-dev libxml2-dev' \
+                   ' make pkg-config'
         self._vinstance.run_command_on_gos(apt_get_cmd + 'update', 300)
         self._vinstance.run_command_on_gos(apt_get_cmd + 'install ' +
                                            pkg_list, 300)
@@ -65,7 +65,7 @@ class Test(classicTest.TestInstance):
         # Install s3fs
         self._vinstance.run_command_on_gos('git clone %s' % self._s3_fs_server)
         self._vinstance.run_command_on_gos('cd %s; ./autogen.sh' %
-                                            self._s3_fs_package, 120)
+                                           self._s3_fs_package, 120)
         self._vinstance.run_command_on_gos('cd ' + self._s3_fs_package +
                                            '; ./configure --prefix=/usr', 120)
         self._vinstance.run_command_on_gos('cd ' + self._s3_fs_package +
@@ -123,7 +123,7 @@ class Test(classicTest.TestInstance):
         read_command = 'time for i in `seq 1 100`; do cat ' +\
                        self._unique_dir + '/test$i >> /dev/null; done'
         delete_command = 'time for i in `seq 1 100`; do rm ' +\
-                        self._unique_dir + '/test$i; done'
+                         self._unique_dir + '/test$i; done'
         try:
             create_output = self._vinstance.run_command_on_gos(create_command,
                                                                600)
@@ -367,7 +367,7 @@ def main():
     parser.add_argument('--secretkey', help='secret key')
     parser.add_argument('--keypairname', help='key pair name'),
     parser.add_argument('--keypairfile', help='path to .pem file created with'
-                                            'key pair')
+                                              'key pair')
     parser.add_argument('--region', help='region where instance will run')
     parser.add_argument('--outfile', help='file to output json results to')
     args = parser.parse_args()
@@ -432,7 +432,7 @@ def main():
         # before tests will begin.
         for vinstance in virtual_instances:
             test_object_list.append(Test(vinstance, args.bucket,
-                               '/mnt/bucket', args.key, args.secretkey))
+                                    '/mnt/bucket', args.key, args.secretkey))
 
         # Run the tests, each step in parallel
         parallel_ops = classicTest.PerformParallelOperations(
@@ -445,7 +445,7 @@ def main():
 
     except Exception:
         log.exception('Error while attempting to run test,'
-                          ' attempting to clean up')
+                      ' attempting to clean up')
 
     # Cleanup the testbed
     cloud_provider.destroy_all_instances()

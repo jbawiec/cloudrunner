@@ -173,7 +173,7 @@ class CloudProviderAWS(CloudProvider):
                 time.sleep(30)
         if time.time() >= timeout:
             log.error('Timed out waiting for instances to match state: %s',
-                       state)
+                      state)
             return False
         log.info('All instances now match state: %s ', state)
         return True
@@ -228,7 +228,7 @@ class VirtualInstanceAWS(VirtualInstance):
         env.user = self._login_name
         env.key_filename = self._key_file
         env.password = ""
-        env.disable_known_hosts=True # AWS instances are transitory
+        env.disable_known_hosts = True  # AWS instances are transitory
         env.warn_only = True
 
     def get_instance_id(self):

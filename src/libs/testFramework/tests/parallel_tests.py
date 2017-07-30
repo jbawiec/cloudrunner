@@ -1,3 +1,7 @@
+"""
+Please refer to top-level LICENSE file for copyright information
+"""
+
 import logging
 import time
 from src.libs.testFramework import classicTest
@@ -5,15 +9,12 @@ from src.libs.testFramework import classicTest
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger('SerialTest')
 
-"""
-Please refer to top-level LICENSE file for copyright information
-"""
 
 class ParallelTest(classicTest.TestInstance):
 
     def __init__(self, sleep=0):
         super(self.__class__, self).__init__(virtual_instance=None)
-        self.sleep=sleep
+        self.sleep = sleep
 
     def setup_environment(self):
         """
@@ -34,7 +35,6 @@ class ParallelTest(classicTest.TestInstance):
         time.sleep(self.sleep)
         log.info("Done sleeping")
 
-
     def execute_test(self):
         """
         The execute_test method will trigger the actual test and record
@@ -43,7 +43,6 @@ class ParallelTest(classicTest.TestInstance):
         :return:
         """
         log.info("execute_test")
-
 
     def cleanup(self):
         """

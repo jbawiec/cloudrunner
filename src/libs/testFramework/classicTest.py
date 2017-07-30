@@ -17,7 +17,7 @@ class TestInstance(object):
     def __init__(self, virtual_instance):
         self._vinstance = virtual_instance
 
-    def get_virtual_jnstance(self):
+    def get_virtual_instance(self):
         """
         The get_virtual_instance method will return the virtual instance object
         :return: virtual instance object
@@ -88,8 +88,7 @@ class PerformParallelOperations(object):
     def _thread_run_and_gather(self, test, method, lock):
         result = getattr(test, method)()
         with lock:
-            self.results.append({method:result})
-
+            self.results.append({method: result})
 
     def _perform_ops(self, method=None, timeout_sec=900, lock=None, args=None):
         thread_list = []

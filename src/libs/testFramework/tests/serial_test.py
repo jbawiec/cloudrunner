@@ -27,7 +27,6 @@ class SerialTest(classicTest.TestInstance):
         """
         log.info("pre_test_setup")
 
-
     def execute_test(self):
         """
         The execute_test method will trigger the actual test and record
@@ -36,7 +35,6 @@ class SerialTest(classicTest.TestInstance):
         :return:
         """
         log.info("execute_test")
-
 
     def cleanup(self):
         """
